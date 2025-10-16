@@ -1,0 +1,68 @@
+﻿kraj,stolica,szerokosc,dlugosc,strefa_czasowa
+Polska,Warszawa,52.2297,21.0122,Europe/Warsaw
+Niemcy,Berlin,52.52,13.405,Europe/Berlin
+Francja,Paryż,48.8566,2.3522,Europe/Paris
+Wielka Brytania,Londyn,51.5074,-0.1278,Europe/London
+Hiszpania,Madryt,40.4168,-3.7038,Europe/Madrid
+Włochy,Rzym,41.9028,12.4964,Europe/Rome
+Portugalia,Lizbona,38.7223,-9.1393,Europe/Lisbon
+Irlandia,Dublin,53.3498,-6.2603,Europe/Dublin
+Belgia,Bruksela,50.8503,4.3517,Europe/Brussels
+Holandia,Amsterdam,52.3676,4.9041,Europe/Amsterdam
+Szwajcaria,Berno,46.948,7.4474,Europe/Zurich
+Austria,Wiedeń,48.2082,16.3738,Europe/Vienna
+Szwecja,Sztokholm,59.3293,18.0686,Europe/Stockholm
+Norwegia,Oslo,59.9139,10.7522,Europe/Oslo
+Finlandia,Helsinki,60.1699,24.9384,Europe/Helsinki
+Dania,Kopenhaga,55.6761,12.5683,Europe/Copenhagen
+Czechy,Praga,50.0755,14.4378,Europe/Prague
+Słowacja,Bratysława,48.1486,17.1077,Europe/Bratislava
+Węgry,Budapeszt,47.4979,19.0402,Europe/Budapest
+Rumunia,Bukareszt,44.4268,26.1025,Europe/Bucharest
+Bułgaria,Sofia,42.6977,23.3219,Europe/Sofia
+Grecja,Ateny,37.9838,23.7275,Europe/Athens
+Chorwacja,Zagrzeb,45.815,15.9819,Europe/Zagreb
+Serbia,Belgrad,44.7866,20.4489,Europe/Belgrade
+Rosja,Moskwa,55.7558,37.6173,Europe/Moscow
+Ukraina,Kijów,50.4501,30.5234,Europe/Kyiv
+Białoruś,Mińsk,53.9045,27.5615,Europe/Minsk
+Litwa,Wilno,54.6872,25.2797,Europe/Vilnius
+Łotwa,Ryga,56.9496,24.1052,Europe/Riga
+Estonia,Tallin,59.437,24.7536,Europe/Tallinn
+Malta,Valletta,35.8989,14.5146,Europe/Malta
+Cypr,Nikozja,35.1856,33.3823,Asia/Nicosia
+Islandia,Reykjavík,64.1466,-21.9426,Atlantic/Reykjavik
+Węgry,Budapeszt,47.4979,19.0402,Europe/Budapest
+Stany Zjednoczone,Waszyngton,38.9072,-77.0369,America/New_York
+Kanada,Ottawa,45.4215,-75.6972,America/Toronto
+Meksyk,Miasto Meksyk,19.4326,-99.1332,America/Mexico_City
+Brazylia,Brasília,-15.7939,-47.8828,America/Sao_Paulo
+Argentyna,Buenos Aires,-34.6037,-58.3816,America/Argentina/Buenos_Aires
+Chile,Santiago,-33.4489,-70.6693,America/Santiago
+Peru,Lima,-12.0464,-77.0428,America/Lima
+Kolumbia,Bogota,4.711,-74.0721,America/Bogota
+Chile,Santiago,-33.4489,-70.6693,America/Santiago
+Australia,Canberra,-35.2809,149.13,Australia/Sydney
+Nowa Zelandia,Wellington,-41.2865,174.7762,Pacific/Auckland
+Chiny,Pekin,39.9042,116.4074,Asia/Shanghai
+Japonia,Tokio,35.6895,139.6917,Asia/Tokyo
+Korea Południowa,Seul,37.5665,126.978,Asia/Seoul
+Indie,Nowe Delhi,28.6139,77.209,Asia/Kolkata
+Pakistan,Islamabad,33.6844,73.0479,Asia/Karachi
+Indonezja,Dżakarta,-6.2088,106.8456,Asia/Jakarta
+Filipiny,Manila,14.5995,120.9842,Asia/Manila
+Tajlandia,Bangkok,13.7563,100.5018,Asia/Bangkok
+Wietnam,Hanoi,21.0278,105.8342,Asia/Ho_Chi_Minh
+Malezja,Kuala Lumpur,3.139,101.6869,Asia/Kuala_Lumpur
+Singapur,Singapur,1.3521,103.8198,Asia/Singapore
+Izrael,Jerozolima,31.7683,35.2137,Asia/Jerusalem
+Arabia Saudyjska,Rijad,24.7136,46.6753,Asia/Riyadh
+Iran,Teheran,35.6892,51.389,Asia/Tehran
+Irak,Bagdad,33.3128,44.3615,Asia/Baghdad
+Egipt,Kair,30.0444,31.2357,Africa/Cairo
+Maroko,Rabat,34.0209,-6.8417,Africa/Casablanca
+Republika Południowej Afryki,Pretoria,-25.7479,28.2293,Africa/Johannesburg
+Nigeria,Abudża,9.0765,7.3986,Africa/Lagos
+Kenia,Nairobi,-1.2921,36.8219,Africa/Nairobi
+Etiopia,Addis Abeba,9.03,38.74,Africa/Addis_Ababa
+Ghana,Akra,5.6037,-0.187,Africa/Accra
