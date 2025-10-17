@@ -29,6 +29,7 @@ def str_to_capital(capital_str, capitals):
             return capital
     return None
 
+# TODO: maybe return datetime
 def get_capital_time(capital):
     IST = pytz.timezone(capital.timezone)
     return datetime.now(IST).strftime("%H:%M:%S")

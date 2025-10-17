@@ -34,7 +34,8 @@ class MainNotebook(ttk.Notebook):
 
         
 
-# TODO: divide into two containers packed vertically, upper one is grid with select and stuff, lower one is clocks also divided in half horizontally
+# TODO: seperate self. to stuff that is actually needed, else can be local variables
+# TODO: seperate stuff to functions
 class CapitalTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
@@ -145,6 +146,7 @@ class AnalogClock(tk.Canvas):
         self.face = self.create_oval(0, 0, self.radius, self.radius) 
         self.update_clock()
 
+    # TODO: maybe don't redraw the whole clock?
     def update_clock(self):
         self.delete(tk.ALL)
         self.current_time = get_capital_time(self.capital)
