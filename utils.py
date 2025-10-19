@@ -1,5 +1,6 @@
 import math
-from datetime import datetime
+import tkinter as tk
+from datetime import datetime, timedelta
 
 import pandas as pd
 import pytz
@@ -13,10 +14,24 @@ class Capital:
         self.latitude = latitude
         self.timezone = timezone
 
+    def get_current_time(self):
+        IST = pytz.timezone(self.timezone)
+        return datetime.now(IST).replace(microsecond=0)
+
     def __str__(self):
         return self.name
 
+class CapitalVar:
+    def __init__(self, capital, capital_list):
+        self.capital = capital
+        self.capital_list = capital_list
+        self.str_var = tk.StringVar(value=self.capital.name)
+        def callback_func(var, *_):
+            self.capital = str_to_capital(self.str_var.get(), self.capital_list) 
+        self.str_var.trace_add('write', callback_func)
 
+
+# TODO: Convert it into self written function (more impressive and idk if I can rely on external libraries)
 def load_countries(file):
     df = pd.read_csv(file)
     capitals = []
@@ -39,21 +54,13 @@ def str_to_capital(capital_str, capitals):
     return None
 
 
-# TODO: maybe return datetime
-def get_capital_time(capital):
-    IST = pytz.timezone(capital.timezone)
-    return datetime.now(IST).strftime("%H:%M:%S")
-
-
 def get_time_diff(time_a, time_b):
-    # TODO: This will take in datetime in the future, don't forget to adjust
-    time_a_dt = datetime.strptime(time_a, "%H:%M:%S")
-    time_b_dt = datetime.strptime(time_b, "%H:%M:%S")
-    # TODO: In the future include a case where they a are equal
-    if time_a_dt > time_b_dt:
-        return time_a_dt - time_b_dt
-    else:
-        return time_b_dt - time_a_dt
+    time_a = time_a.replace(tzinfo=None)
+    time_b = time_b.replace(tzinfo=None)
+    return abs(time_b - time_a)
+
+def time_to_string(time):
+    return time.strftime("%H:%M:%S")
 
 
 # Use the haversine formula to calculate the distance between two points on earth's surface
