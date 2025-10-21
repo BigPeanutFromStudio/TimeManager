@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from capital_tab import CapitalTab
+from stopwatch_tab import StopwatchTab
 
 
 class App(tk.Tk):
@@ -33,11 +34,6 @@ class MainNotebook(ttk.Notebook):
 
 
 
-class StopwatchTab(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.label = ttk.Label(self, text="Text in stopwatch")
-        self.label.pack()
 
 
 

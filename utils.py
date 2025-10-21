@@ -1,6 +1,5 @@
 import math
-import tkinter as tk
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import pandas as pd
 import pytz
@@ -20,16 +19,6 @@ class Capital:
 
     def __str__(self):
         return self.name
-
-class CapitalVar:
-    def __init__(self, capital, capital_list):
-        self.capital = capital
-        self.capital_list = capital_list
-        self.str_var = tk.StringVar(value=self.capital.name)
-        def callback_func(var, *_):
-            self.capital = str_to_capital(self.str_var.get(), self.capital_list) 
-        self.str_var.trace_add('write', callback_func)
-
 
 # TODO: Convert it into self written function (more impressive and idk if I can rely on external libraries)
 def load_countries(file):

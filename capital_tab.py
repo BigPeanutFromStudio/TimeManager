@@ -2,12 +2,25 @@ import tkinter as tk
 from tkinter import ttk
 
 from analog_clock import AnalogClock
-from utils import CapitalVar, get_time_diff, load_countries, time_to_string
+from utils import get_time_diff, load_countries, str_to_capital, time_to_string
 
+
+class CapitalVar:
+    def __init__(self, capital, capital_list):
+        self.capital = capital
+        self.capital_list = capital_list
+        self.str_var = tk.StringVar(value=self.capital.name)
+        def callback_func(var, *_):
+            self.capital = str_to_capital(self.str_var.get(), self.capital_list) 
+        self.str_var.trace_add('write', callback_func)
 
 # TODO: seperate self. to stuff that is actually needed, else can be local variables
 # TODO: seperate stuff to functions
 # TODO: make it so it says do tylu and do przodu 
+
+# TODO: IT WAS SUPPOSED TO BE A BTN :skull:
+# TODO: Make it so a couple of clocks are always visible (timezone you're in and rest is configurable)
+
 class CapitalTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
