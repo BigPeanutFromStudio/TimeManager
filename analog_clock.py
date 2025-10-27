@@ -80,3 +80,73 @@ class AnalogClock(tk.Canvas):
         x = self.center_x + minute_hand_length * math.sin(math.radians(minute_angle))
         y = self.center_y - minute_hand_length * math.cos(math.radians(minute_angle))
         self.create_line(self.center_x, self.center_y, x, y, fill="red", width=1)
+
+
+
+class AnalogStopwatch(tk.Canvas):
+    def __init__(self, parent, timer, pad):
+        super().__init__(parent)
+        self.pad = pad
+        self.timer = timer
+        self.current_time = int(timer.get_time(formatted=False))
+        self.radius = 0
+        self.center_x = 0 
+        self.center_y = 0 
+        self.after(100, self.initialize_geometry)
+        self.update_clock()
+
+    def initialize_geometry(self):
+        self.radius = self.winfo_reqheight() - self.pad
+        self.center_x = self.winfo_reqwidth() / 2
+        self.center_y = (self.radius + self.pad) / 2
+        self.face = self.create_oval(0, 0, self.radius, self.radius)
+
+
+    # TODO: maybe don't redraw the whole clock?
+    def update_clock(self):
+        self.current_time = int(self.timer.get_time(formatted=False)) 
+        self.delete(tk.ALL)
+        self.face = self.create_oval(
+            (self.winfo_reqwidth() / 2) - (self.radius / 2),
+            self.pad,
+            (self.winfo_reqwidth() / 2) + (self.radius / 2),
+            self.radius,
+            fill="white",
+            width=2,
+        )
+        self.draw_numbers()
+        self.draw_hands()
+        self.after(10, self.update_clock)
+
+    def draw_numbers(self):
+        self.create_text(
+            self.center_x,
+            self.center_y - 0.85 * self.center_y,
+            text="60",
+            font=("TkDefaultFont", 16),
+        )
+        for i in range(5, 60, 5):
+            angle = i * (360 / 60)
+            # TODO: get your head around this
+            x = self.center_x + 0.85 * self.center_y * math.sin(math.radians(angle))
+            y = self.center_y - 0.85 * self.center_y * math.cos(math.radians(angle))
+            self.create_text(x, y, text=i, font=("TkDefaultFont", 16))
+
+    def draw_hands(self):
+        # Draw a point in the middle
+        self.create_oval(
+            self.center_x - 2,
+            self.center_y + 2,
+            self.center_x + 4,
+            self.center_y - 4,
+            fill="black",
+        )
+
+        current_ms = self.current_time
+
+        # Draw a second hand
+        second_angle = (current_ms) * (360 / (60 * 1000))
+        second_hand_length = 0.8 * self.center_y
+        x = self.center_x + second_hand_length * math.sin(math.radians(second_angle))
+        y = self.center_y - second_hand_length * math.cos(math.radians(second_angle))
+        self.create_line(self.center_x, self.center_y, x, y, fill="blue", width=2)

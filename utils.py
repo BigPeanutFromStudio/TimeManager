@@ -51,6 +51,15 @@ def get_time_diff(time_a, time_b):
 def time_to_string(time):
     return time.strftime("%H:%M:%S")
 
+def format_ms(ms):
+    hours = math.floor(ms / 3600000)
+    minutes = math.floor(ms / 60000) % 60
+    seconds = math.floor(ms / 1000) % 60
+    miliseconds = ms % 1000
+    # Wyświetl tylko 2 pierwsze cyfry
+    miliseconds = str(miliseconds)[:2].zfill(2)
+    return f'{minutes:02d}:{seconds:02d}:{miliseconds}' if hours == 0 else f'{hours}:{minutes:02d}:{seconds:02d}' 
+
 
 # Use the haversine formula to calculate the distance between two points on earth's surface
 # More about haversine formula: https://en.wikipedia.org/wiki/Haversine_formula

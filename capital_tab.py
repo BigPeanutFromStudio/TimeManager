@@ -15,7 +15,6 @@ class CapitalVar:
         self.str_var.trace_add('write', callback_func)
 
 # TODO: seperate self. to stuff that is actually needed, else can be local variables
-# TODO: seperate stuff to functions
 # TODO: make it so it says do tylu and do przodu 
 
 # TODO: IT WAS SUPPOSED TO BE A BTN :skull:
