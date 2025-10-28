@@ -1,8 +1,7 @@
+import csv
 import math
 from datetime import datetime
-
-import pandas as pd
-import pytz
+from zoneinfo import ZoneInfo
 
 
 class Capital:
@@ -14,25 +13,30 @@ class Capital:
         self.timezone = timezone
 
     def get_current_time(self):
-        IST = pytz.timezone(self.timezone)
-        return datetime.now(IST).replace(microsecond=0)
+        tz = ZoneInfo(self.timezone)
+        return datetime.now(tz).replace(microsecond=0)
 
     def __str__(self):
         return self.name
 
-# TODO: Convert it into self written function (more impressive and idk if I can rely on external libraries)
 def load_countries(file):
-    df = pd.read_csv(file)
     capitals = []
-    for _, row in df.iterrows():
-        capital = Capital(
-            row["stolica"],
-            row["kraj"],
-            row["szerokosc"],
-            row["dlugosc"],
-            row["strefa_czasowa"],
-        )
-        capitals.append(capital)
+    with open(file, 'r') as f:
+        csv_file = csv.reader(f, delimiter=',')
+        i = 0
+        for row in csv_file:
+            if i == 0:
+                i+=1
+                continue
+            capital = Capital(
+                row[1],
+                row[0],
+                row[2],
+                row[3],
+                row[4],
+            )
+            capitals.append(capital)
+            i+=1
     return capitals
 
 
