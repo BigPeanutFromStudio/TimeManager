@@ -19,6 +19,7 @@ class Capital:
     def __str__(self):
         return self.name
 
+# Wczytywanie państw i ich stolic z pliku CSV
 def load_countries(file):
     capitals = []
     with open(file, 'r') as f:
@@ -60,7 +61,6 @@ def format_ms(ms):
     minutes = math.floor(ms / 60000) % 60
     seconds = math.floor(ms / 1000) % 60
     miliseconds = ms % 1000
-    # Wyświetl tylko 2 pierwsze cyfry
+    # Wyświetl tylko 2 pierwsze cyfry milisekund ponieważ i tak aktualizuje je co 10ms więc liczba jedności jest nie potrzebna, gdyż zawsze będzie wynosić 0
     miliseconds = str(miliseconds)[:2].zfill(2)
     return f'{minutes:02d}:{seconds:02d}:{miliseconds}' if hours == 0 else f'{hours}:{minutes:02d}:{seconds:02d}' 
-

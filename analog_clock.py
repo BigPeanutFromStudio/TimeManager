@@ -17,6 +17,8 @@ class AnalogClock(tk.Canvas):
         self.after(100, self.initialize_geometry)
         self.update_clock()
 
+    # Inicjalizacja geometrii następuje z opóźnieniem (w tym przypadku 100ms)
+    # Jest to potrzebne jeśli chciałbym ustawić niestandardowy rozmiar, ponieważ rozmiar jest ustawiany po __init__
     def initialize_geometry(self):
         self.radius = self.winfo_reqheight() - self.pad
         self.center_x = self.winfo_reqwidth() / 2
@@ -48,7 +50,9 @@ class AnalogClock(tk.Canvas):
         )
         for i in range(1, 12):
             angle = i * (360 / 12)
+            # Normalnie koordynaty x obliczane są używając cosinusa, a y - sinusa jednak to dawałoby obrót przeciwny do ruchu wskazówek zegara, więc zamieniam je miejscami
             x = self.center_x + 0.8 * self.center_y * math.sin(math.radians(angle))
+            # Wartość y musi zostac odwrócona aby była zgodna z systemem koordynatów tkintera, gdzie punkt (0,0) znajduje się w lewym górnym rogu
             y = self.center_y - 0.8 * self.center_y * math.cos(math.radians(angle))
             self.create_text(x, y, text=i, font=("TkDefaultFont", 16))
 
@@ -76,7 +80,6 @@ class AnalogClock(tk.Canvas):
             self.create_line(x, y, x_2, y_2, fill="black", width=width)
 
     def draw_hands(self):
-        # Draw a point in the middle
         self.create_oval(
             self.center_x - 2,
             self.center_y + 2,
@@ -89,7 +92,6 @@ class AnalogClock(tk.Canvas):
         current_minute = self.current_time.minute
         current_hour = self.current_time.hour % 12
 
-        # Draw an hour hand
         hour_angle = (current_hour * 60 * 60 + current_minute * 60 + current_second) * (
             360 / (60 * 60 * 12)
         )
@@ -98,14 +100,12 @@ class AnalogClock(tk.Canvas):
         y = self.center_y - hour_hand_length * math.cos(math.radians(hour_angle))
         self.create_line(self.center_x, self.center_y, x, y, fill="blue", width=3)
 
-        # Draw a minute hand
         minute_angle = (current_minute * 60 + current_second) * (360 / (60 * 60))
         minute_hand_length = 0.7 * self.center_y
         x = self.center_x + minute_hand_length * math.sin(math.radians(minute_angle))
         y = self.center_y - minute_hand_length * math.cos(math.radians(minute_angle))
         self.create_line(self.center_x, self.center_y, x, y, fill="green", width=2)
 
-        # Draw a second hand
         minute_angle = (current_second) * (360 / 60)
         minute_hand_length = 0.8 * self.center_y
         x = self.center_x + minute_hand_length * math.sin(math.radians(minute_angle))
@@ -158,7 +158,6 @@ class AnalogStopwatch(tk.Canvas):
         )
         for i in range(5, 60, 5):
             angle = i * (360 / 60)
-            # TODO: get your head around this
             x = self.center_x + 0.85 * self.center_y * math.sin(math.radians(angle))
             y = self.center_y - 0.85 * self.center_y * math.cos(math.radians(angle))
             self.create_text(x, y, text=i, font=("TkDefaultFont", 16))
@@ -187,7 +186,6 @@ class AnalogStopwatch(tk.Canvas):
             self.create_line(x, y, x_2, y_2, fill="black", width=width)
 
     def draw_hands(self):
-        # Draw a point in the middle
         self.create_oval(
             self.center_x - 2,
             self.center_y + 2,
@@ -198,7 +196,6 @@ class AnalogStopwatch(tk.Canvas):
 
         current_ms = self.current_time
 
-        # Draw a second hand
         second_angle = (current_ms) * (360 / (60 * 1000))
         second_hand_length = 0.8 * self.center_y
         x = self.center_x + second_hand_length * math.sin(math.radians(second_angle))

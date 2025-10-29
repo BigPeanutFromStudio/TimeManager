@@ -8,19 +8,18 @@ from stopwatch_tab import StopwatchTab
 class App(tk.Tk):
     def __init__(self, title, size):
 
-        # setup
+        # Inicializacja okna
         super().__init__()
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
         self.minsize(size[0], size[1])
 
-        # styles
+        # Style
         style = ttk.Style(self)
         style.theme_use('clam')
         style.configure("TNotebook.Tab", width=self.winfo_screenwidth(), font=('', 12))
-        style.configure("time.TLabel", font=('', 16), background='gray')
 
-        # widgets
+        # Główny widżet
         self.main = MainNotebook(self)
         self.main.pack(expand=True, fill="both")
 

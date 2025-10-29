@@ -5,6 +5,8 @@ from analog_clock import AnalogClock
 from utils import get_time_diff, load_countries, str_to_capital, time_to_string
 
 
+# Klasa pozwalająca przechowywać stolicę (wraz z informacjami o niej) wraz z StringVar'em dzięki czemu nie muszę rozdzielać tych zmiennych
+# oraz nie muszę pamiętać aby aktualizować obydwu zmiennych
 class CapitalVar:
     def __init__(self, capital, capital_list):
         self.capital = capital
@@ -18,8 +20,10 @@ class CapitalTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
 
+        # Ładowanie listy państw z pliku
         self.capitals = load_countries("stolice_państw.csv")
 
+        # Inicjalizuje zmienne przechowywujące wybrane państwa
         self.selected_capital_one = CapitalVar(self.capitals[0], self.capitals)
         self.selected_capital_two = CapitalVar(self.capitals[1], self.capitals) 
 

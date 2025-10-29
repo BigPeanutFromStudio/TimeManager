@@ -5,9 +5,9 @@ from analog_clock import AnalogStopwatch
 from utils import format_ms
 
 
-# Holds time in miliseconds
 class Timer():
     def __init__(self, starting_time=0):
+        # Czas wyrażony w milisekundach
         self.time = starting_time
         self.running = False
         self.time_display = tk.StringVar(value="00:00:00")
@@ -28,6 +28,7 @@ class Timer():
         if formatted:
             return format_ms(self.time)
         else:
+            # Opcja zwrócenia czasu w milisekundach bez formatowania przydaje się do debugowania
             return str(self.time)
 
 
