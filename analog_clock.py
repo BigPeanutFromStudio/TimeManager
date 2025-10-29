@@ -1,6 +1,9 @@
 import math
 import tkinter as tk
 
+# Połączenie tych klas w jedną jest możliwe, jednak zdecydowałem się na pozostawienie ich rozdzielonych z racji iż nie jest to
+# priorytet oraz łatwiej pracuje się w ten sposób
+
 
 class AnalogClock(tk.Canvas):
     def __init__(self, parent, capital, pad):
@@ -8,13 +11,18 @@ class AnalogClock(tk.Canvas):
         self.pad = pad
         self.capital_var = capital
         self.current_time = self.capital_var.capital.get_current_time()
+        self.radius = 0
+        self.center_x = 0 
+        self.center_y = 0 
+        self.after(100, self.initialize_geometry)
+        self.update_clock()
+
+    def initialize_geometry(self):
         self.radius = self.winfo_reqheight() - self.pad
         self.center_x = self.winfo_reqwidth() / 2
         self.center_y = (self.radius + self.pad) / 2
         self.face = self.create_oval(0, 0, self.radius, self.radius)
-        self.update_clock()
 
-    # TODO: maybe don't redraw the whole clock?
     def update_clock(self):
         self.current_time = self.capital_var.capital.get_current_time()
         self.delete(tk.ALL)
@@ -28,6 +36,7 @@ class AnalogClock(tk.Canvas):
         )
         self.draw_numbers()
         self.draw_hands()
+        self.draw_ticks()
         self.after(200, self.update_clock)
 
     def draw_numbers(self):
@@ -39,10 +48,32 @@ class AnalogClock(tk.Canvas):
         )
         for i in range(1, 12):
             angle = i * (360 / 12)
-            # TODO: get your head around this
             x = self.center_x + 0.8 * self.center_y * math.sin(math.radians(angle))
             y = self.center_y - 0.8 * self.center_y * math.cos(math.radians(angle))
             self.create_text(x, y, text=i, font=("TkDefaultFont", 16))
+
+    def draw_ticks(self):
+        self.create_line(
+                self.center_x,
+                self.center_y - 0.93 * self.center_y,
+                self.center_x,
+                self.center_y - 0.89 * self.center_y,
+                fill="black",
+                width=2
+            )
+
+        for i in range(1, 60):
+            angle = i * (360 / 60)
+            length = 0.89
+            width = 1
+            if i % 5 == 0:
+                length = 0.87
+                width = 2
+            x = self.center_x + 0.93 * self.center_y * math.sin(math.radians(angle))
+            y = self.center_y - 0.93 * self.center_y * math.cos(math.radians(angle))
+            x_2 = self.center_x + length * self.center_y * math.sin(math.radians(angle))
+            y_2 = self.center_y - length * self.center_y * math.cos(math.radians(angle))
+            self.create_line(x, y, x_2, y_2, fill="black", width=width)
 
     def draw_hands(self):
         # Draw a point in the middle
@@ -102,7 +133,6 @@ class AnalogStopwatch(tk.Canvas):
         self.face = self.create_oval(0, 0, self.radius, self.radius)
 
 
-    # TODO: maybe don't redraw the whole clock?
     def update_clock(self):
         self.current_time = int(self.timer.get_time(formatted=False)) 
         self.delete(tk.ALL)
@@ -116,6 +146,7 @@ class AnalogStopwatch(tk.Canvas):
         )
         self.draw_numbers()
         self.draw_hands()
+        self.draw_ticks()
         self.after(10, self.update_clock)
 
     def draw_numbers(self):
@@ -131,6 +162,29 @@ class AnalogStopwatch(tk.Canvas):
             x = self.center_x + 0.85 * self.center_y * math.sin(math.radians(angle))
             y = self.center_y - 0.85 * self.center_y * math.cos(math.radians(angle))
             self.create_text(x, y, text=i, font=("TkDefaultFont", 16))
+
+    def draw_ticks(self):
+        self.create_line(
+                self.center_x,
+                self.center_y - 0.97 * self.center_y,
+                self.center_x,
+                self.center_y - 0.9 * self.center_y,
+                fill="black",
+                width=2
+            )
+
+        for i in range(1, 60):
+            angle = i * (360 / 60)
+            length = 0.94
+            width = 1
+            if i % 5 == 0:
+                length = 0.92
+                width = 2
+            x = self.center_x + 0.97 * self.center_y * math.sin(math.radians(angle))
+            y = self.center_y - 0.97 * self.center_y * math.cos(math.radians(angle))
+            x_2 = self.center_x + length * self.center_y * math.sin(math.radians(angle))
+            y_2 = self.center_y - length * self.center_y * math.cos(math.radians(angle))
+            self.create_line(x, y, x_2, y_2, fill="black", width=width)
 
     def draw_hands(self):
         # Draw a point in the middle

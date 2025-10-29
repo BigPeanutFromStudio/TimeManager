@@ -16,7 +16,9 @@ class App(tk.Tk):
 
         # styles
         style = ttk.Style(self)
-        style.configure("TNotebook.Tab", width=self.winfo_screenwidth())
+        style.theme_use('clam')
+        style.configure("TNotebook.Tab", width=self.winfo_screenwidth(), font=('', 12))
+        style.configure("time.TLabel", font=('', 16), background='gray')
 
         # widgets
         self.main = MainNotebook(self)
@@ -30,12 +32,6 @@ class MainNotebook(ttk.Notebook):
         self.stopwatch_tab = StopwatchTab(self)
         self.add(self.capital_tab, text="Stolice")
         self.add(self.stopwatch_tab, text="Stoper")
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

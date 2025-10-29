@@ -1,4 +1,4 @@
-﻿kraj,stolica,szerokosc,dlugosc,strefa_czasowa
+kraj,stolica,szerokosc,dlugosc,strefa_czasowa
 Polska,Warszawa,52.2297,21.0122,Europe/Warsaw
 Niemcy,Berlin,52.52,13.405,Europe/Berlin
 Francja,Paryż,48.8566,2.3522,Europe/Paris
@@ -32,7 +32,6 @@ Estonia,Tallin,59.437,24.7536,Europe/Tallinn
 Malta,Valletta,35.8989,14.5146,Europe/Malta
 Cypr,Nikozja,35.1856,33.3823,Asia/Nicosia
 Islandia,Reykjavík,64.1466,-21.9426,Atlantic/Reykjavik
-Węgry,Budapeszt,47.4979,19.0402,Europe/Budapest
 Stany Zjednoczone,Waszyngton,38.9072,-77.0369,America/New_York
 Kanada,Ottawa,45.4215,-75.6972,America/Toronto
 Meksyk,Miasto Meksyk,19.4326,-99.1332,America/Mexico_City
@@ -41,7 +40,6 @@ Argentyna,Buenos Aires,-34.6037,-58.3816,America/Argentina/Buenos_Aires
 Chile,Santiago,-33.4489,-70.6693,America/Santiago
 Peru,Lima,-12.0464,-77.0428,America/Lima
 Kolumbia,Bogota,4.711,-74.0721,America/Bogota
-Chile,Santiago,-33.4489,-70.6693,America/Santiago
 Australia,Canberra,-35.2809,149.13,Australia/Sydney
 Nowa Zelandia,Wellington,-41.2865,174.7762,Pacific/Auckland
 Chiny,Pekin,39.9042,116.4074,Asia/Shanghai
@@ -66,3 +64,5 @@ Nigeria,Abudża,9.0765,7.3986,Africa/Lagos
 Kenia,Nairobi,-1.2921,36.8219,Africa/Nairobi
 Etiopia,Addis Abeba,9.03,38.74,Africa/Addis_Ababa
 Ghana,Akra,5.6037,-0.187,Africa/Accra
+RPA,Pretoria,-25.7479,28.2293,Africa/Johannesburg
+Meksyk,Meksyk,19.4326,-99.1332,America/Mexico_City

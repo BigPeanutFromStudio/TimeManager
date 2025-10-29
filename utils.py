@@ -64,25 +64,3 @@ def format_ms(ms):
     miliseconds = str(miliseconds)[:2].zfill(2)
     return f'{minutes:02d}:{seconds:02d}:{miliseconds}' if hours == 0 else f'{hours}:{minutes:02d}:{seconds:02d}' 
 
-
-# Use the haversine formula to calculate the distance between two points on earth's surface
-# More about haversine formula: https://en.wikipedia.org/wiki/Haversine_formula
-
-
-# Think this through, maybe after everything
-def get_distance_between(capital_a, capital_b):
-    r = 6371000
-    d_lat = abs(capital_a.latitude - capital_b.latitude)
-    d_lon = abs(capital_a.longitude - capital_b.longitude)
-    num = (
-        1
-        - math.cos(d_lat)
-        + (
-            math.cos(capital_a.latitude)
-            * math.cos(capital_b.latitude)
-            * (1 - math.cos(d_lon))
-        )
-    )
-    hav = num / 2
-    d = 2 * r * math.asin(hav)
-    return d

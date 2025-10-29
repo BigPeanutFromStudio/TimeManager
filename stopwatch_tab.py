@@ -1,4 +1,3 @@
-import math
 import tkinter as tk
 from tkinter import ttk
 
@@ -25,7 +24,6 @@ class Timer():
             self.time += 10
             self.time_display.set(self.get_time())
 
-    # TODO: display tenths place max
     def get_time(self, formatted=True):
         if formatted:
             return format_ms(self.time)
@@ -39,19 +37,22 @@ class StopwatchTab(ttk.Frame):
         super().__init__(parent)
 
         self.left = ttk.Frame(self)
-        self.left.pack(side='left', fill='both', expand=True)
+        self.left.pack(side='left', fill='both', expand=True, pady=5, padx=5)
 
         self.right = ttk.Frame(self)
-        self.right.pack(side='right', fill='both', expand=True)
+        self.right.pack(side='right', fill='both', expand=True, padx=5, pady=5)
+
+        self.right_title = ttk.Label(self.right, text="Ostatnie czasy:", font=('', 20))
+        self.right_title.pack()
 
         self.timer = Timer()
         self.time_list = []
         self.time_labels = []
-        self.min_time = tk.StringVar(value="Min: 00:00:00")
-        self.min_time_label = ttk.Label(self.right, textvariable=self.min_time)
+        self.min_time = tk.StringVar(value="Najszybszy: 00:00:00")
+        self.min_time_label = ttk.Label(self.right, textvariable=self.min_time, font=('', 18))
         self.min_time_label.pack(side='bottom')
-        self.max_time = tk.StringVar(value="Max: 00:00:00")
-        self.max_time_label = ttk.Label(self.right, textvariable=self.max_time)
+        self.max_time = tk.StringVar(value="Najwolniejszy: 00:00:00")
+        self.max_time_label = ttk.Label(self.right, textvariable=self.max_time, font=('', 18))
         self.max_time_label.pack(side='bottom')
 
         self.clock_space = ttk.Frame(self.left)
@@ -63,7 +64,7 @@ class StopwatchTab(ttk.Frame):
         self.other_space = ttk.Frame(self.left)
         self.other_space.pack(side='bottom', fill='both', expand=True)
 
-        self.label = ttk.Label(self.other_space, textvariable=self.timer.time_display) 
+        self.label = ttk.Label(self.other_space, textvariable=self.timer.time_display, font=('', 20)) 
         self.label.pack()
 
         self.toggle_btn_text = tk.StringVar(value="Start")
@@ -79,24 +80,27 @@ class StopwatchTab(ttk.Frame):
         self.update_timer()
 
     def record_time(self):
-        self.timer.running = False
-        self.time_list.append(int(self.timer.get_time(formatted=False))) 
+        if self.timer.running:
+            self.timer.running = False
+            self.time_list.append(int(self.timer.get_time(formatted=False))) 
 
-        self.min_time.set(value=f"Min {format_ms(min(self.time_list))}")
-        self.max_time.set(value=f"Max {format_ms(max(self.time_list))}")
+            self.min_time.set(value=f"Najszybszy {format_ms(min(self.time_list))}")
+            self.max_time.set(value=f"Najwolniejszy {format_ms(max(self.time_list))}")
 
-        label = ttk.Label(self.right, text=self.timer.get_time())
-        label.pack()
-        self.time_labels.append(label)
-        self.timer.reset()
+            label = ttk.Label(self.right, text=self.timer.get_time(), font=('', 16), padding=10)
+            label.pack()
+            self.time_labels.append(label)
+            self.timer.reset()
 
     def reset_times(self):
         self.time_list.clear()
         for label in self.time_labels:
             label.destroy()
         self.time_labels.clear()
-        self.min_time.set(value=f'Min {format_ms(0)}')
-        self.max_time.set(value=f'Max {format_ms(0)}')
+        self.min_time.set(value=f'Najszybszy {format_ms(0)}')
+        self.max_time.set(value=f'Najwolniejszy {format_ms(0)}')
+        self.timer.running = False
+        self.timer.reset()
 
 
     def update_timer(self):
